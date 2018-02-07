@@ -50,7 +50,6 @@ class MainAdapter(fragmentManager: FragmentManager,
 
     private fun autoSlideViewPager() {
         val handler = Handler()
-        var x = 0
         var arrow = 0
         val runnable = object : Runnable {
             override fun run() {
@@ -59,37 +58,34 @@ class MainAdapter(fragmentManager: FragmentManager,
                 /**
                  * loop left to right if last index to first index
                  */
-                if (x < listImage.size) {
-                    viewPager.setCurrentItem(x, true)
-                    x++
-                } else {
+                if (indexPage < listImage.size)
+                    viewPager.setCurrentItem(indexPage++, true)
+                else
                     viewPager.setCurrentItem(0, true)
-                    x = 1
-                }
 
                 /**
                  * loop left to right if last index right to left
                  */
-//                if (x <= listImage.size) {
+//                if (indexPage <= listImage.size) {
 //
 //                    if (arrow == 0)
 //                        arrow = 1
 //
 //                    if (arrow == 1) {
-//                        viewPager.setCurrentItem(x, true)
-//                        x++
+//                        viewPager.setCurrentItem(indexPage, true)
+//                        indexPage++
 //                    }
 //
-//                    if (x == listImage.size) {
+//                    if (indexPage == listImage.size) {
 //                        arrow = 2
-//                        x--
+//                        indexPage--
 //                    }
 //
 //                    if (arrow == 2) {
-//                        viewPager.setCurrentItem(x, true)
-//                        x--
+//                        viewPager.setCurrentItem(indexPage, true)
+//                        indexPage--
 //
-//                        if (x == 0)
+//                        if (indexPage < 0)
 //                            arrow = 1
 //                    }
 //                }
